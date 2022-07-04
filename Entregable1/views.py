@@ -8,15 +8,11 @@ from django.shortcuts import render
 
 def home(request):
     
-    template = loader.get_template('index.html')
-    
-    render = template.render({})
-    
-    return HttpResponse(render)
+    return render(request, 'index.html')
 
-def acerca_de(request):
+def about(request):
     
-    template = loader.get_template('acerca_de.html')
+    template = loader.get_template('about.html')
     
     render = template.render({})
     
