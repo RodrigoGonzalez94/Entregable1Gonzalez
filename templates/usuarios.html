@@ -1,0 +1,38 @@
+{% extends 'template_base.html' %}
+
+{% block title %}
+<title>Listado de Usuarios</title>
+{% endblock title %}
+
+{% block texto_header %}
+<h1>
+    Listado de Usuarios
+</h1>
+{% endblock texto_header %}
+
+{% block despues_del_header %}
+<p>
+    <a href={% url 'formulario' %}>Formulario usuarios</a>
+</p>
+
+<p>
+    <form action={% url 'listado_usuarios' %}>
+        {{form}}
+        <button>Buscar</button>
+    </form>
+</p>
+
+<p>
+    {% if listado_usuarios %}
+    <ul>
+        {% for usuario in listado_usuarios %}
+        <li>
+            {{usuario}}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    No se encontraron datos.
+    {% endif %}
+</p>
+{% endblock despues_del_header %}
