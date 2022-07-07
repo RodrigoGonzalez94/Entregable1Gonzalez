@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Entrega1Gonzalez.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'C:\Users\figor\OneDrive\Escritorio\31085\Proyectos\Entrega1Gonzalez\templates'],
+        'DIRS': [r'.\templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

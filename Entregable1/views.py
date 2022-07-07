@@ -10,11 +10,18 @@ from .forms import FormUsuarios, BusquedaUsuario
 # Create your views here.
 
 def home(request):
+    """
+    Función nos llevará al template index.html 
     
+    """
     return render(request, 'index.html')
 
 def formulario(request):
-
+    """
+    Función que toma la información que el usuario le proporcione
+    la guardará, y redirigirá al listado de todos los uduarios que se han guradado.
+    
+    """
     if request.method == 'POST':
         form = FormUsuarios(request.POST)
         
@@ -40,7 +47,10 @@ def formulario(request):
     return render(request, 'formulario_usuarios.html', {'form': form_usuario})
 
 def listado_usuarios(request):
+    """
+    Hace una busqueda por la clase 'nombre', devuelve todos las coincidencias.
     
+    """   
     nombre_de_busqueda = request.GET.get('nombre')
     
     if nombre_de_busqueda:
@@ -53,6 +63,10 @@ def listado_usuarios(request):
 
 
 def about(request):
+    """
+    Función nos llevará al template about.html 
+    
+    """
     
     template = loader.get_template('about.html')
     

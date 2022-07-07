@@ -3,6 +3,10 @@ from django.db import models
 # Create your models here.
 
 class Usuarios(models.Model):
+    """
+    Se define la clase Usuarios, para recabar información que despues será 
+    mostrada y consultada por los uduarios.
+    """
     nombre = models.CharField(max_length=30)
     edad = models.IntegerField()
     fecha_nacimiento = models.DateField(null = True)
