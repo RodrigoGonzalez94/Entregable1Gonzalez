@@ -30,8 +30,20 @@
             <div class="container">
                  <a class="navbar-brand" href={% url 'home' %}>Home</a>
                  <a class="navbar-brand" href={% url 'formulario' %}>Formulario</a>
-            </div>
-        </nav>
+                 {% if request.user.is_authenticated %}
+                 <a class="navbar-brand" href={% url 'perfil' %}>
+                     {% if request.user.masdatosusuario.avatar %}
+                     <img src={{request.user.masdatosusuario.avatar.url}} alt="" height="50px">
+                     {% endif %}
+                     {{request.user.username}}
+                 </a>
+                 <a class="navbar-brand" href={% url 'logout' %}>Logout</a>
+                 {% else %}
+                 <a class="navbar-brand" href={% url 'login' %}>Login</a>
+                 <a class="navbar-brand" href={% url 'register' %}>Register</a>
+                 {% endif %}
+             </div>
+         </nav>
 
         {% block header %} {% block texto_header %}{% endblock texto_header %} 
         {% endblock header %} {% block despues_del_header%}{% endblock despues_del_header %}

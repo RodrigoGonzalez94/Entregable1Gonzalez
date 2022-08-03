@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 
 from .models import Usuarios
 from .forms import FormUsuarios, BusquedaUsuario
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -74,6 +75,7 @@ def about(request):
     
     return HttpResponse(render)
 
+@login_required
 def editar_usuario(request, id):
     """
     Función para poder editar la información ya ingresada en el formulario.
@@ -99,7 +101,7 @@ def editar_usuario(request, id):
     
     return render(request, 'editar_usuario.html', {'form': form_usuario, 'usuario': usuario})
 
-
+@login_required
 def eliminar_usuario(request, id):
     """
     Función para poder eliminar la información ya ingresada en el formulario.
