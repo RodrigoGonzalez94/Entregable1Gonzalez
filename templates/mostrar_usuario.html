@@ -1,0 +1,31 @@
+{% extends 'template_base.html' %}
+
+{% block title %}
+<title>Usuario</title>
+{% endblock title %}
+
+{% block texto_header %}
+<h1>
+    Usuario
+</h1>
+{% endblock texto_header %}
+
+{% block despues_del_header %}
+<p>
+    <a href={% url 'listado_usuarios' %}>Volver</a>
+</p>
+
+<p>
+    <ul>
+        <li>
+            {{usuario.nombre}}
+        </li>
+        <li>
+            {{usuario.edad}}
+        </li>
+        <li>
+            {{usuario.fecha_creacion}}
+        </li>
+    </ul>
+</p>
+{% endblock despues_del_header %}

@@ -73,3 +73,46 @@ def about(request):
     render = template.render({})
     
     return HttpResponse(render)
+
+def editar_usuario(request, id):
+    """
+    Función para poder editar la información ya ingresada en el formulario.
+    
+    """   
+    usuario = Usuarios.objects.get(id=id)
+    
+    if request.method == 'POST':
+        form = FormUsuarios(request.POST)
+        if form.is_valid():
+            usuario.nombre = form.cleaned_data.get('nombre')
+            usuario.edad = form.cleaned_data.get('edad')
+            usuario.fecha_nacimiento = form.cleaned_data.get('fecha_nacimiento')
+            usuario.ocupacion = form.cleaned_data.get('ocupacion')
+            usuario.save()
+    
+            return redirect('listado_usuarios')
+        
+        else:
+            return render(request, 'editar_usuario.html', {'form': form, 'usuario': usuario})
+            
+    form_usuario = FormUsuarios(initial={'nombre': usuario.nombre, 'edad': usuario.edad, 'fecha_nacimiento': usuario.fecha_nacimiento, 'ocupacion': usuario.ocupacion})
+    
+    return render(request, 'editar_usuario.html', {'form': form_usuario, 'usuario': usuario})
+
+
+def eliminar_usuario(request, id):
+    """
+    Función para poder eliminar la información ya ingresada en el formulario.
+    
+    """ 
+    usuario = Usuarios.objects.get(id=id)
+    usuario.delete()
+    return redirect('listado_usuarios')
+
+def mostrar_usuario(request, id):
+    """
+    Función para visualizar la información ya ingresada en el formulario.
+    
+    """ 
+    usuario = Usuarios.objects.get(id=id)
+    return render(request, 'mostrar_usuario.html', {'usuario': usuario})
