@@ -21,7 +21,7 @@ def login(request):
             
             if user is not None:
                 django_login(request, user)
-                return redirect('index')
+                return redirect('home')
             else:
                 return render(request, 'accounts/login.html', {'form': form})
         else:
@@ -37,7 +37,7 @@ def register(request):
         form = MyUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('home')
         else:
             return render(request, 'accounts/register.html', {'form': form})
     
