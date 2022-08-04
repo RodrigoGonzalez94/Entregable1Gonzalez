@@ -65,6 +65,8 @@ def editar_perfil(request):
                 
             user.email = data.get('email') if data.get('email') else user.email
             mas_datos_usuario.avatar = data.get('avatar') if data.get('avatar') else mas_datos_usuario.avatar
+            mas_datos_usuario.descripcion = data.get('descripcion') if data.get('descripcion') else mas_datos_usuario.descripcion
+            mas_datos_usuario.link = data.get('link') if data.get('link') else mas_datos_usuario.link
             
             # if data.get('password1') and data.get('password1') == data.get('password2'):
             #     user.set_password(data.get('password1'))
@@ -82,7 +84,9 @@ def editar_perfil(request):
                 'email': user.email,
                 'first_name': user.first_name,
                 'last_name': user.last_name,
-                'avatar': mas_datos_usuario.avatar
+                'avatar': mas_datos_usuario.avatar,
+                'descripcion': mas_datos_usuario.descripcion,
+                'link': mas_datos_usuario.link,
             }
         )
 
